@@ -1,28 +1,54 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<div id="app">
+	<!-- 	<div v-if="email.length  < 10">Ale masz krótki email!</div>
+	<div v-else-if="email.length < 15">Twój adres e-mail jest w sam raz.</div>
+	<div v-else>Tw�j adres e-mail jest stanowczo zasłuugi.</div> -->
+
+	<h1>Witaj w systemie do zapisów na zajęcia</h1>
+	<div v-if="log == 0">
+		Zaloguj się e-mailem <input tyle="email" v-model="email">
+		<button @click="logIn()">Zaloguj</button>
+	</div>
+	<div v-else>
+		<h3>Witaj {{email}}!</h3>
+		<p @click="logOut()">Wyloguj</p>
+
+	</div>
+
+
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+	//definicja stanu metoda o nazwie data()
+	data() {
+		  return {
+		    email: '',
+		    password: '',
+		    log: false
+		  };
+		},
+		//zachowanie - metody
+		methods: {
+			logIn(){
+				this.log = true;
+			},
+			
+			logOut(){
+				this.log = false;
+			}
+		}
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+	margin-top: 60px;
 }
 </style>
