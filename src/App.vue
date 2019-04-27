@@ -5,8 +5,8 @@
 	<div v-else>Tw�j adres e-mail jest stanowczo zasłuugi.</div> -->
 
 	<h1>Witaj w systemie do zapisów na zajęcia</h1>
-	<div v-if="log == 0">
-		Zaloguj się e-mailem <input tyle="email" v-model="email">
+	<div v-if="!log">
+		<p>Zaloguj się e-mailem <input tyle="email" v-model="email"></p>
 		<button @click="logIn()">Zaloguj</button>
 	</div>
 	<div v-else>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import "milligram";
+
 export default {
 	//definicja stanu metoda o nazwie data()
 	data() {
@@ -32,11 +34,12 @@ export default {
 		//zachowanie - metody
 		methods: {
 			logIn(){
-				this.log = true;
+				this.log = !this.log;
 			},
 			
 			logOut(){
-				this.log = false;
+				this.log = !this.log;
+				this.email = ''
 			}
 		}
 }
