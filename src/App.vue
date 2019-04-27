@@ -3,7 +3,10 @@
 
 	<h1>Witaj w systemie do zapisów na zajęcia</h1>
 	<div v-if="!log">
-		<login-form @login="logIn($event)"></login-form>
+		<login-form @login="enter($event)" :button-label="'Wejdź'"></login-form>
+		<login-form @login="enter($event)" :button-label="'Wleć'"></login-form>
+		<login-form @login="enter($event)"
+			:button-label="'Zaloguj się jak człowiek'"></login-form>
 	</div>
 	<div v-else>
 		<h3>Witaj {{email}}!</h3>
